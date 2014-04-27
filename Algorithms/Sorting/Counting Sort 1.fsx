@@ -1,19 +1,20 @@
+let ar =
+    stdin.ReadLine() |> ignore
+    stdin.ReadLine().Split ' '
+    |> Array.map int
+
+let count x =
+    ar
+    |> Array.fold
+        (fun acc y ->
+            match y with
+            | _ when y = x -> acc + 1
+            | _ -> acc)
+        0
+    |> string
+
 [<EntryPoint>]
-let main args =
-    let array =
-        stdin.ReadLine() |> ignore
-        stdin.ReadLine().Split ' '    
-        |> Array.map int
-    [0 .. 99]
-    |> List.map (fun x ->
-       array
-       |> Array.fold
-            (fun acc y ->
-                match y with
-                | _ when y = x -> acc + 1
-                | _ -> acc)
-            0
-        |> string)
-    |> String.concat " "
-    |> stdout.Write
-    0
+[0 .. 99]
+|> List.map count
+|> String.concat " "
+|> stdout.Write
